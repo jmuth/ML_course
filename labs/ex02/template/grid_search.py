@@ -5,7 +5,7 @@ Grid Search
 """
 
 import numpy as np
-import costs
+#import costs
 
 
 def generate_w(num_intervals):
@@ -41,3 +41,27 @@ def grid_search(y, tx, w0, w1):
             loss[i, j] = compute_cost(y, tx, w)
     
     return loss
+
+def compute_cost(y, tx, w):
+    """calculate the cost.
+
+    you can calculate the cost by mse or mae.
+    """
+    # ***************************************************
+    # INSERT YOUR CODE HERE
+    # TODO: compute loss by MSE / MAE
+    # ***************************************************
+    
+    # vector e
+    e = compute_e(y, tx, w)
+    N = compute_N(e)
+    L_MSE = np.dot(np.matrix.transpose(e), e)
+    L_MSE = L_MSE / (2 * N)
+    
+    return L_MSE
+
+def compute_e(y, tx, w):
+    return (y - np.dot(tx,w))
+
+def compute_N(e):
+    return e.shape[0]
