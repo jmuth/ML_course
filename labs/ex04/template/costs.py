@@ -6,6 +6,8 @@ import numpy as np
 
 def compute_mse(y, tx, beta):
     """compute the loss by mse."""
+    print(y)
+    print(tx)
     e = y - tx.dot(beta)
     mse = e.dot(e) / (2 * len(e))
     return mse
